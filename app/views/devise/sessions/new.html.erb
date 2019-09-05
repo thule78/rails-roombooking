@@ -1,0 +1,48 @@
+  <section class="form-elegant col-12 col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-body mx-4">
+        <div class="text-center">
+          <h3 class="dark-grey-text mb-5"><strong>Log in</strong></h3>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="md-form">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="md-form pb-3">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+        <div class="md-form">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+        <% end %>
+
+        <div class="text-center mb-3">
+          <%= f.submit "Log in", class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %>
+        </div>
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Log in with:
+        </p>
+
+        <div class="row my-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+            class="fab fa-facebook-f blue-text text-center"></i></button>
+          <!--Twitter-->
+          <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i
+            class="fab fa-twitter blue-text"></i></button>
+          <!--Google +-->
+          <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i
+            class="fab fa-google-plus-g blue-text"></i></button>
+        </div>
+        <% end %>
+      </div>
+      <div class="modal-footer mx-5 pt-3 mb-1">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </section>
