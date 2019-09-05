@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
+  has_many :rooms, dependent: :destroy
+
+  validates :name, presence: true, length: {maximum: 50}
+
     def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.email = auth.info.email

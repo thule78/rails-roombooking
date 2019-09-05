@@ -1,0 +1,21 @@
+<div class="container my-3">
+  <div class="row d-flex justify-content-between">
+    <div class="col-12 col-md-3">
+      <div class="center">
+        <%= image_tag avatar_url(@user), class: 'avatar-large card-img-top'%>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">Verification</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Email Address: </li>
+          <li class="list-group-item">Phone Number </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-md-8">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.description %></p>
+    </div>
+  </div>
+</div>
+

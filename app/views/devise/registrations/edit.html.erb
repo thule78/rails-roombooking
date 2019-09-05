@@ -1,58 +1,87 @@
-  <section class="form-elegant col-12 col-md-6 offset-md-3">
-    <div class="card">
-      <div class="card-body mx-4">
-        <div class="text-center">
-          <h2><strong>Edit <%= resource_name.to_s.humanize %></strong></h2>
-        </div>
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="md-form">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-        </div>
-        <div class="md-form">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-        </div>
+  <div class="container my-3">
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-3">
+        <ul class="row d-flex justify-content-between">
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary'%>
 
-        <div class="md-form">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-          <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
-        </div>
 
-        <div class="md-form">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-        </div>
+            <%= link_to "View Profile", user_path(current_user.id), class: 'btn btn-secondary' %>
 
-        <div class="md-form md-form my-3 form-control">
-          <%= f.label :avatar %>
-          <%= f.file_field :image %>
-        </div>
-
-        <div class="text-center mb-3">
-          <%= f.submit "Update", class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %>
-        </div>
-        <% end %>
-      </div>
-      <div class="modal-footer mx-5 pt-3 mb-1">
-
-        <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %></p>
-
-        <%= link_to "Back", :back %>
+        </ul>
 
       </div>
+      <div class="col-md-8">
+        <section class="form-elegant col-12">
+          <div class="card">
+            <div class="card-body mx-4">
+              <div class="text-center">
+                <h2><strong>Edit Your Profile</strong></h2>
+              </div>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="md-form">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+              </div>
+              <div class="md-form">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+              </div>
 
+              <div class="md-form">
+                <%= f.label :Phone %><br />
+                <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
+              </div>
+
+              <div class="md-form">
+                <%= f.label :description %><br />
+                <%= f.text_area :description, autofocus: true, class: 'form-control' %>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="md-form">
+                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+              </div>
+
+              <div class="md-form">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+
+              <div class="md-form md-form my-3 form-control">
+                <%= f.label :avatar %>
+                <%= f.file_field :image %>
+              </div>
+
+              <div class="text-center mb-3">
+                <%= f.submit "Update", class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %>
+              </div>
+              <% end %>
+            </div>
+            <div class="modal-footer mx-5 pt-3 mb-1">
+
+              <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %></p>
+
+              <%= link_to "Back", :back %>
+
+            </div>
+
+          </div>
+        </section>
+      </div>
     </div>
-  </section>
+  </div>
+
+
 
 
 
