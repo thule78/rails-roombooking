@@ -15,8 +15,9 @@
     </ul>
     <ul class="navbar-nav mr-1">
       <% if user_signed_in?%>
+      <%= image_tag avatar_url(current_user), class: "avatar"%>
       <li class="nav-item dropdown">
-        <%= image_tag avatar_url(current_user), class: "avatar"%>
+
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%if current_user.name.nil? %>
           <%= current_user.email%>

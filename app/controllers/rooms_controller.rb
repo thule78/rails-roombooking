@@ -7,13 +7,14 @@ class RoomsController < ApplicationController
   end
 
   def new
-    @room = current_user.rooms.build
+    @room = current_user.rooms.new
   end
 
   def create
-    @room = current_user.rooms.build(room_params)
+    @room = current_user.rooms.new(room_params)
+    @user = current_user
     if @room.save
-      return redirect_to listing_room_path(@room), notice: 'Saved...'
+     redirect_to listing_room_path(@room), notice: 'Saved...'
     else
       render :new, notice: 'Something went wrong..'
     end

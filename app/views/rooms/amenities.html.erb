@@ -1,2 +1,39 @@
-<h1>Rooms#amenities</h1>
-<p>Find me in app/views/rooms/amenities.html.erb</p>
+<div class="row">
+  <div class="col-md-3 col-12">
+    <%= render 'room_menu'%>
+  </div>
+  <div class="col-md-9 col-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Amenities
+      </div>
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for @room do |f|%>
+          <div class="row form-group mt-3">
+            <div class="col-md-2">
+              <%= f.check_box :is_tv %> TV
+            </div>
+            <div class="col-md-2">
+              <%= f.check_box :is_air %> Aircon
+            </div>
+            <div class="col-md-2">
+              <%= f.check_box :is_heating %> Heating
+            </div>
+            <div class="col-md-2">
+              <%= f.check_box :is_internet %> Internet
+            </div>
+            <div class="col-md-2">
+              <%= f.check_box :is_kitchen %> Kitchen
+            </div>
+          </div>
+            <br>
+          <div class="row"><%= f.submit "Save", class: 'btn btn-outline-info' %></div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
