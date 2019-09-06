@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "paperclip", "~> 6.0.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -14,6 +14,34 @@
  *= require_self
  *= require bootstrap/scss/bootstrap
  */
+/* Text */
+a {
+  color: #00A699;
+}
+
+.container {
+  width: 80%;
+}
+
+.text-babu, .icon-babu {
+  color: #00A699;
+}
+
+.text-red, .icon-red {
+  color: #FF5A5F;
+}
+
+.btn-babu {
+  background-color: #00A699;
+  color: #fff;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.btn-babu:hover {
+  background-color: #006d64;
+}
+
 
 /*AVATAR FROM LEWAGON*/
 
@@ -47,6 +75,7 @@
   background-color: #00A699;
   font-size: 18px;
   font-weight: 400;
+  padding: 10px 20px;
 }
 
 .row-space-1 {

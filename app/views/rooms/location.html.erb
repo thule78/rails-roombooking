@@ -10,14 +10,14 @@
       <div class="panel-body">
         <div class="container">
           <%= form_for @room do |f|%>
-          <div class="row">
+          <div class="row mt-3">
             <div class="form-group col-md-10">
               <label for="">Address</label>
-              <%= f.text_field :address, placeholder: "123, 14 Street, Herndon VA 22071-2716", class: "form-control"%>
+              <%= f.text_field :address, placeholder: "123, 14 Street, Herndon VA 22071-2716", class: "form-control", required: true%>
             </div>
           </div>
           <div class="text-center">
-            <%= f.submit "Save", class: 'btn btn-outline-info'%>
+            <%= f.submit "Save", class: 'btn-babu'%>
           </div>
           <% end %>
         </div>

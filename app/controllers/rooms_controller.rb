@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:show]
+  before_action :is_authorised, except: [:show, :new, :index, :create]
 
   def index
     @rooms = current_user.rooms
@@ -34,6 +35,7 @@ class RoomsController < ApplicationController
   end
 
   def photo_upload
+    @photos = @room.photos
   end
 
   def amenities
@@ -48,13 +50,19 @@ class RoomsController < ApplicationController
     else
       flash[:notice] = 'Something went wrong...'
     end
-    redirect_to(fallback_location: request.referer)
+    redirect_back(fallback_location: request.referer)
   end
 
   private
 
+
   def set_room
     @room = Room.find(params[:id])
+  end
+
+  def is_authorised
+    redirect_to root_path, alert: "You don't have permission" unless current_user.id == @room.user_id
+
   end
 
   def room_params
