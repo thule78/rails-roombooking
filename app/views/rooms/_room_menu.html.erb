@@ -38,7 +38,7 @@
   </li>
 </ul>
 <hr >
-<% is_ready = !@room.active && !@room.price.blank? && !@room.listing_name.blank? && !@room.photos.blank? && !@room.address.blank?%>
+<% is_ready = !@room.active && !@room.price.blank? && !@room.listing_name.blank? && !@room.photos.blank? && !@room.address.blank? && !@room.home_type.blank? && !@room.room_type.blank? && !@room.accommodate.blank? && !@room.bed_room.blank? && !@room.bath_room.blank?  %>
 <%= form_for @room do |f|%>
   <%= f.hidden_field :active, value: true %>
   <%= f.submit "Publish", id: "publish_button", class: 'btn btn-danger btn-lg btn-block', disabled: !is_ready %>

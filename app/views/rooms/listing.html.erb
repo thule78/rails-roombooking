@@ -15,14 +15,14 @@
               <div class="form-group">
                 <label for="">Home Type</label>
                 <%= f.select :home_type, [['Apartment', 'Apartment'], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]],
-                id: 'home_type', prompt: "Select...", clas: 'form-control'%>
+                id: 'home_type', prompt: "Select...", class: 'form-control', required: true %>
               </div>
             </div>
             <div class="col-12 col-md-4 select">
               <div class="form-group">
                 <label for="">Room Type</label>
                 <%= f.select :room_type, [['Entire', 'Entire'], ["Private", "Private"], ["Shared", "Shared"]],
-                id: 'room_type', prompt: "Select...", clas: 'form-control'%>
+                id: 'room_type', prompt: "Select...", class: 'form-control', required: true%>
               </div>
             </div>
 
@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label for="">Accommodate</label>
                 <%= f.select :accommodate, [['1', 1], ["2", 2], ["3", 3], ["4+", 4]],
-                id: 'accommodate', prompt: "Select...", clas: 'form-control'%>
+                id: 'accommodate', prompt: "Select...", class: 'form-control', required: true%>
               </div>
             </div>
 
@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label for="">Bedrooms</label>
                 <%= f.select :bed_room, [['1', 1], ["2", 2], ["3", 3], ["4+", 4]],
-                id: 'bed_room', prompt: "Select...", clas: 'form-control'%>
+                id: 'bed_room', prompt: "Select...", class: 'form-control', required: true%>
               </div>
             </div>
 
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <label for="">Bathrooms</label>
                 <%= f.select :bath_room, [['1', 1], ["2", 2], ["3", 3], ["4+", 4]],
-                id: 'bath_room', prompt: "Select...", clas: 'form-control'%>
+                id: 'bath_room', prompt: "Select...", class: 'form-control', required: true%>
               </div>
             </div>
           </div>
