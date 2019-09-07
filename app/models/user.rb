@@ -8,7 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
-  has_many :rooms, dependent: :destroy
+  has_many :rooms
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 50}
 
