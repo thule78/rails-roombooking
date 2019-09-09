@@ -27,6 +27,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "paperclip", "~> 6.0.0"
 gem 'geocoder', '~> 1.4', '>= 1.4.6'
+gem 'jquery-ui-rails'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
