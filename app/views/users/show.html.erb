@@ -1,20 +1,45 @@
 <div class="container my-3">
   <div class="row d-flex justify-content-between">
     <div class="col-12 col-md-3">
-      <div class="center">
+      <div class="center mb-3">
         <%= image_tag avatar_url(@user), class: 'avatar-large card-img-top'%>
       </div>
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">Verification</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Email Address: </li>
-          <li class="list-group-item">Phone Number </li>
+      <div class="panel panel-default">
+        <div class="panel-heading mb-2">Verification</div>
+        <div class="panel-body">
+          <ul class="sidebar-list">
+            <% if @user.confirmation_token %>
+          <li>Email Address: <span class="float-right icon-babu"><i class="far fa-check-circle"></i></span> </li><hr >
+          <% end %>
+          <% if @user.provider %>
+          <li>Facebook<span class="float-right icon-babu"><i class="far fa-check-circle"></i></span> </li><hr >
+          <% end %>
+
+          <li>Phone Number<span class="float-right icon-babu"><i class="far fa-check-circle"></i></span> </li><hr >
         </ul>
+        </div>
       </div>
     </div>
     <div class="col-12 col-md-8">
       <h2><%= @user.name %></h2>
-      <p><%= @user.description %></p>
+      <div class="description row-space-3">
+        <p><%= @user.description %></p>
+      </div>
+      <h4>Listing: (<%= @rooms.length %>)</h4><br>
+      <div class="row">
+        <% @rooms.each do |room| %>
+          <div class="col-md-4 m-3">
+            <div class="panel panel-default">
+              <div class="panel-heading preview">
+                <%= image_tag room.cover_photo(:medium) %>
+              </div>
+              <div class="panel-body">
+                <%= link_to room.listing_name, room %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
