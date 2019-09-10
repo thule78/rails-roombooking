@@ -40,7 +40,24 @@
           </div>
         <% end %>
       </div>
+      <hr >
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Reviews From Guests (<%= @guest_reviews.count %>)</h4>
+        </div>
+        <div class="container">
+          <%= render 'reviews/guest_list' %>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Reviews From Hosts (<%= @host_reviews.count %>)</h4>
+        </div>
+        <div class="container">
+          <%= render 'reviews/host_list' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

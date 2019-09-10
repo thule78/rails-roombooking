@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   has_many :photos
   has_many :reservations
 
-  has_many :guet_reviews
+  has_many :guest_reviews
 
 
   geocoded_by :address

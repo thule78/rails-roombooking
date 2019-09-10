@@ -1,0 +1,35 @@
+<% if @host_reviews.count ==0 %>
+  <div class="text-center">
+    <h4>There are no reviews.</h4>
+  </div>
+<% else %>
+  <% @host_reviews.order(id: :desc).first(10).each do |r| %>
+  <hr >
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <%= image_tag avatar_url(r.host), class: "avatar-large"%><br>
+      <strong><%= r.host.name %></strong>
+    </div>
+    <div class="col-md-9">
+      <div id="star_<%= r.id %>"></div>
+      <% if current_user && current_user == r.host %>
+      <span class="float-right">
+        <%= link_to r, method: :delete, data: {confirm: "Are you sure?"} do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </span>
+      <% end %>
+      <div><%= r.created_at.strftime('%v') %></div>
+      <div><%= r.comment %></div>
+    </div>
+  </div>
+    <script>
+    $('#star_<%= r.id %>').raty({
+        path: 'https://cdnjs.cloudflare.com/ajax/libs/raty/2.8.0/images/',
+        readyOnly: true,
+        score: <%= r.star %>
+      });
+    </script>
+  <% end %>
+<% end %>
+
