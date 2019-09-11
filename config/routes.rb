@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#index'
+  root to: 'pages#home'
 
   devise_for :users,
               path: '',
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'amenities'
       get 'location'
       get 'preload'
+      get 'preview'
     end
     resources :photos, only: [:create, :destroy]
     resources :reservations, only: [:create]
@@ -26,5 +27,7 @@ Rails.application.routes.draw do
   resources :host_reviews, only: [:create, :destroy]
   get '/your_trips' => 'reservations#your_trips'
   get '/your_reservations' => 'reservations#your_reservations'
+
+  get 'search' => 'pages#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

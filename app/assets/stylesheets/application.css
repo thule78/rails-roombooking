@@ -315,11 +315,23 @@ box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 25
   background-size: cover;
   background-position: center;
   height: 326px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 150px;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
 }
+
 
 .banner {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
+/* Home Page disappear search*/
+.is-hidden {
+  display: none;
+}
 
