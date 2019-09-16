@@ -1,0 +1,39 @@
+<div class="container my-3">
+  <div class="row d-flex justify-content-between">
+  <div class="col-md-3">
+    <div class="center mb-3">
+      <%= image_tag avatar_url(current_user), class: "avatar-large card-img-top"%>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading p-2">
+        <%= current_user.name %>
+      </div>
+      <div class="panel-body">
+        <ul class="sidebar-lst">
+          <% if current_user.confirmation_token %>
+          <li>Email Address <span class="float-right icon-babu"><i class="far fa-check-circle"></i></span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <!--Notifivation-->
+    <div class="panel panel-default">
+      <div class="panel-heading p-3">
+        Notifications
+      </div>
+      <div class="panel-body">
+
+      </div>
+    </div>
+    <div class="panel panel-default mt-3">
+      <div class="panel-heading p-3">Your Listingd (<%= @rooms.length %>)</div>
+      <div class="row panel-body">
+        <%= render partial: 'rooms/rooms_list', locals: {rooms: @rooms} %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

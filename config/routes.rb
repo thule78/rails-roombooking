@@ -25,9 +25,10 @@ Rails.application.routes.draw do
 
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
-  get '/your_trips' => 'reservations#your_trips'
-  get '/your_reservations' => 'reservations#your_reservations'
+  get '/your_trips', to: 'reservations#your_trips'
+  get '/your_reservations', to: 'reservations#your_reservations'
 
-  get 'search' => 'pages#search'
+  get 'search', to: 'pages#search'
+  get 'dashboard', to: 'dashboards#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
