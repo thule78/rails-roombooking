@@ -36,5 +36,12 @@ Rails.application.routes.draw do
 
   get 'search', to: 'pages#search'
   get 'dashboard', to: 'dashboards#index'
+
+  resources :reservations, only: [:approve, :decline] do
+    member do
+      post '/approve', to: "reservations#approve"
+      post '/decline', to: "reservations#decline"
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

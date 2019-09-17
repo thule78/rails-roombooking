@@ -4,7 +4,7 @@
   </div>
   <div class="col-md-9 col-12">
     <div class="panel panel-default">
-      <div class="panel-heading">
+      <div class="panel-heading p-3">
         Listing
       </div>
       <div class="panel-body">
@@ -25,6 +25,12 @@
                 id: 'room_type', prompt: "Select...", class: 'form-control', required: true%>
               </div>
             </div>
+            <div class="col-12 col-md-4 select">
+            <div class="form-group">
+              <label for="">Booking Type</label>
+              <%= f.select :instant, Room.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: 'form-control', required: true%>
+            </div>
+          </div>
 
             <div class="col-12 col-md-4 select">
               <div class="form-group">
