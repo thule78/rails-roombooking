@@ -43,5 +43,7 @@ Rails.application.routes.draw do
       post '/decline', to: "reservations#decline"
     end
   end
+
+  get '/host_calendar', to: "calendars#host"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

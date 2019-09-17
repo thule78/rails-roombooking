@@ -14,6 +14,7 @@
  *= require_self
  *= require bootstrap/scss/bootstrap
   *= require jquery-ui
+  *= require fullcalendar
  */
 /* Text */
 a {

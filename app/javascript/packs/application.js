@@ -11,6 +11,12 @@ require("bootstrap/dist/js/bootstrap")
 require("jquery")
 require ("jquery-ui")
 require("raty")
+require ("moment")
+require ("fullcalendar")
+
+
+//calendar
+window.Calendar = require("@fullcalendar/core").Calendar;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
