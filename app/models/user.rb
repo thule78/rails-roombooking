@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'twilio-ruby'
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable, :trackable and :omniauthable, :confirmable
   devise :database_authenticatable, :registerable,
@@ -29,4 +30,27 @@ class User < ApplicationRecord
         user.provider = auth.provider
       end
     end
+
+    def generate_pin
+    self.pin = SecureRandom.hex(2)
+    self.phone_verified = false
+    save
+  end
+
+  def send_pin
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+
+    from = '+12563630643' # Your Twilio number
+    to = self.phone_number # Your mobile phone number
+
+    @client.messages.create(
+    from: from,
+    to: to,
+    body: "Your pin is #{self.pin}"
+    )
+  end
+
+  def verify_pin(entered_pin)
+    update(phone_verified: true) if self.pin == entered_pin
+  end
 end

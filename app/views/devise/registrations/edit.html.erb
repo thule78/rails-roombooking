@@ -1,94 +1,119 @@
-  <div class="container my-3">
-    <div class="row d-flex justify-content-between">
-      <div class="col-md-3">
-        <ul class="row d-flex justify-content-between">
+<div class="row m-3">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "sidebar-link active" %></li>
+    </ul>
+    <br/>
+    <%= link_to "View My Profile", user_path(current_user.id), class: "btn btn-default" %>
+  </div>
+  <div class="col-md-9 text-center">
+    <div class="panel panel-default">
+      <div class="panel-heading">Your Profile</div>
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render 'shared/devisemes' %>
 
-            <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-primary'%>
+            <div class="form-group">
+              <%= f.text_field :name, autofocus: true, placeholder: "Full Name", class: "form-control" %>
+            </div>
 
+            <div class="form-group">
+              <%= f.text_area :description, rows: 5, cols: 25, autofocus: true, placeholder: "Description", class: "form-control" %>
+            </div>
 
-            <%= link_to "View Profile", user_path(current_user.id), class: 'btn btn-secondary' %>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
+            </div>
 
-        </ul>
-
-      </div>
-      <div class="col-md-8">
-        <section class="form-elegant col-12">
-          <div class="card">
-            <div class="card-body mx-4">
-              <div class="text-center">
-                <h2><strong>Edit Your Profile</strong></h2>
-              </div>
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
-              <div class="md-form">
-                <%= f.label :name %><br />
-                <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-              </div>
-              <div class="md-form">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-              </div>
-
-              <div class="md-form">
-                <%= f.label :Phone %><br />
-                <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
-              </div>
-
-              <div class="md-form">
-                <%= f.label :description %><br />
-                <%= f.text_area :description, autofocus: true, class: 'form-control' %>
-              </div>
-
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-              <% end %>
+            <% end %>
 
-              <div class="md-form">
-                <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-                <% if @minimum_password_length %>
-                <br />
-                <em><%= @minimum_password_length %> characters minimum</em>
-                <% end %>
-              </div>
-
-              <div class="md-form">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-              </div>
-
-              <div class="md-form md-form my-3 form-control">
-                <%= f.label :avatar %>
-                <%= f.file_field :image %>
-              </div>
-
-              <div class="text-center mb-3">
-                <%= f.submit "Update", class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %>
-              </div>
-              <% end %>
-            </div>
-            <div class="modal-footer mx-5 pt-3 mb-1">
-
-              <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn blue-gradient btn-block btn-rounded z-depth-1a" %></p>
-
-              <%= link_to "Back", :back %>
-
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: "New Password (leave blank if you don't want to change it)", class: "form-control" %>
             </div>
 
-          </div>
-        </section>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Save", class: "btn btn-normal btn-block" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
+
+    <br/>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Your Phone Number</div>
+      <div class="panel-body">
+        <div class="container">
+          <% if !current_user.phone_number.blank? %>
+              <h4><%= current_user.phone_number %></h4>
+              <button class="btn btn-default" data-toggle="modal" data-target="#update-phone">Update Phone Number</button>
+              <% if current_user.phone_verified == false %>
+                  <button class="btn btn-default" data-toggle="modal" data-target="#verify-phone">Verify</button>
+              <% end %>
+          <% else %>
+              <button class="btn btn-default" data-toggle="modal" data-target="#update-phone">Add Phone Number</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
 
+<!-- MODAL FOR PHONE NUMBER -->
+<div id="update-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Phone Number</h4>
+      </div>
 
+      <div class="modal-body">
+        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
+            <div class="form-group">
+              <%= f.phone_field :phone_number, class: "form-control", placeholder: "Your Phone Number" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "Save", class: "btn btn-normal" %>
+            </div>
+        <% end %>
+      </div>
 
+    </div>
+  </div>
+</div>
 
+<!-- MODAL FOR VERIFICATION -->
+<div id="verify-phone" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Verification Code</h4>
+      </div>
 
+      <div class="modal-body">
+        <%= form_for current_user, url: verify_phone_number_user_path(current_user), method: :post do |f| %>
+            <div class="form-group">
+              <%= f.text_field :pin, class: "form-control", placeholder: "Your PIN", value: "" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "Verify", class: "btn btn-normal" %>
+            </div>
+        <% end %>
+      </div>
 
-
-
-
-
+    </div>
+  </div>
+</div>
