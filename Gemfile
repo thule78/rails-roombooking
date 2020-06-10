@@ -26,7 +26,7 @@ gem 'font-awesome-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "paperclip", "~> 6.0.0"
-gem 'geocoder', '~> 1.4', '>= 1.4.6'
+gem 'geocoder', '~> 1.6'
 gem 'jquery-ui-rails'
 gem 'ransack'
 gem 'twilio-ruby', '~> 5.26.0'
